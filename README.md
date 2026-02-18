@@ -63,7 +63,7 @@ The project will process a credit risk data set which will have details such as 
 ---
 
 ## Goal
-The primary goal of this project is to build and evaluate a supervised machine learning model that predicts whether a loan applicant will default or not based on their historical credit, employment and financial data.
+The primary goal of this project is to build and evaluate a supervised machine learning model that predicts the probability that a loan applicant will default on a loan based on their historical credit, employment and financial data.
 
 Essentially, the project aims to:
 - Train a classification model using labeled credit risk data.  
@@ -71,6 +71,8 @@ Essentially, the project aims to:
 - Achieve reliable predictive performance measures using ROC, precision, recall and F1 score on a test set  
 - Identify and analyze the most influential features contributing to default risk.  
 - Spot any ethical or moral concerns with our model and address them (try to find ways to avoid this)  
+
+**Note:** Although the model produces a probability, a threshold can be applied by the user to convert the output into a binary decision for evaluation purposes. This is useful as different Banks and Financial Instituions will have different thresholds on probabilities of defaulting e.g. one Bank might have a probability greater than 0.6 as a default risk whereas others may have it at 0.8 or higher. 
 
 ---
 
