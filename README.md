@@ -124,3 +124,178 @@ We will be exploring multiple supervised learning models to compare performance 
 - Gradient Boosting (XGBoost or something similar)  
 
 These models will be evaluated using standard classification metrics and the final model giving us the best performance will be chosen for our final prototype.
+
+------ waqars edits
+
+
+# Credit Risk detection
+
+## How to Build and Run the Code
+
+First, install all dependencies and build the environment:
+
+
+`make install`
+
+Run the full pipeline
+`make run`
+
+Run tests
+`make test`
+
+Main script 
+`final_code.py`
+
+All outputs (plots, predictions, feature importance) are saved in:
+`outputs/`
+
+## Project Goal
+The goal of this project is to predict whether a loan applicant will default using a real-world credit risk dataset.
+
+This is a binary classification problem:
+
+- 1 -> Default
+- 0 -> No default
+
+## Dataset
+The dataset is loaded from:
+`https://raw.githubusercontent.com/DaneshBU/CS506-Project/main/data/credit_risk_dataset.csv`
+it includes
+- Numerical features (income, loan amount, interest rate, etc.)
+- Categorical features (loan grade, home ownership, etc.)
+- Target variable: __loan_status__
+
+## Data Processing
+Steps performed
+1. Remove duplicate rows
+2. Seperate features and target (__loan_status__)
+3. Automatically detect:
+   - Numerical features
+   - Categorical features
+
+## Preprocessing
+
+__Numerical features__
+- Missing values -> Median imputation
+- scaling -> standard scalar
+
+__Categorical features:__
+- Missing values -> Most frequent imputation
+- Encoding -> One-hot encoding
+
+## Data Splitting
+The dataset is split into:
+- 60% __Training__
+- 20% __Validation__
+- 20% __Test__
+Stratified splitting is used to preserve class balance.
+
+## Model
+we use:
+`XGBoost Classifier`
+Why XGBoost:
+- Handles tabular data very well
+- Captures non-linear relationships
+- Built-in regularization
+
+## Model Configuration
+Key parameters:
+```
+n_estimators = 300
+max_depth = 6
+learning_rate = 0.05
+subsample = 0.9
+colsample_bytree = 0.9
+```
+
+## Threshold Tuning
+Instead of using default 0.5:
+- We test threshold from 0.1 to 0.9
+- Select the best threshold on __validation F1 score__
+This improves performance for imbalanced data.
+
+## Evaluation Metrics
+We evaluate using
+- Accuracy
+- Prescion
+- Recall 
+- F1 score
+- ROC AUC
+- Confusion matrix
+
+## Visualizations
+The project generates the following plots:
+- Roc curve
+- prescion recall curve
+- Validation confusion matrix
+- Test confusion matrix
+- Top 20 Feature Importances
+
+All saved in
+` outputs/`
+
+
+## Results
+The model achieves strong performance on the test set using the optimized threshold.
+Outputs generated
+```
+outputs/XGBoost_test_predictions.csv
+outputs/xgboost_feature_importance.csv
+outputs/xgboost_roc_curve.png
+outputs/xgboost_precision_recall_curve.png
+outputs/xgboost_validation_confusion_matrix.png
+outputs/xgboost_test_confusion_matrix.png
+outputs/xgboost_feature_importance.png
+```
+
+## Testing
+We include a small test suite using __pytest__.
+
+Tests check:
+- Dataset loads correctly
+- Target column exists
+- Target is binary
+- Duplicate removal works
+- Train/validation/test split works
+- Feature types are correctly detected
+
+Run tests:
+`make test`
+
+## Github Workflow
+A GitHub Actions workflow is included:
+`.github/workflows/tests.yml`
+This automatically:
+1. Installs dependencies
+2. Run tests
+
+Triggered on:
+- Push
+- Pull requests
+
+## How Everything Connects
+- __final_code.py__ → runs full pipeline (data → model → results)
+- __Makefile__ → builds, runs, tests project
+- __tests__ -> ensures tests pass automatically
+- outputs/ -> stores all results and visualizations
+
+## Conclusion
+This project demonstrates an end-to-end machine learning pipeline:
+- Data preprocessing
+- Model training (XGBoost)
+- Threshold tuning
+- Evaluation
+- Visualization
+- Automated testing
+
+The model successfully predicts loan default risk using structured financial data.
+
+```
+- Build/run instructions (first section)
+- Testing + GitHub workflow
+- Data + modeling explanation
+- Visualizations
+- Results
+```
+
+
