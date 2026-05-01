@@ -2,6 +2,7 @@
 # Credit Risk Detection
 
 ## Youtube Link 
+https://www.youtube.com/watch?v=b4-95i2h4So
 
 ## Problem statement
 Lending money is a core part of banks and financial institutions, but it comes with inherent risk. Every time a loan is issued, there is a possibility that the borrower may fail to repay it. These events, known as loan defaults, can lead to substantial financial losses if not managed properly. Rather than manually making credit decisions on metrics such as income, employment, and credit history, we want to make a model that can automate this process. This is especially needed as the volume of loan applications increases and data gets more detailed.
