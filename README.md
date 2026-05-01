@@ -11,7 +11,7 @@ Lending money is a core part of banks and financial institutions, but it comes w
 ## Description
 The project will process a credit risk data set which will have details such as credit risk history, income, home ownership, employment, etc as well as an outcome if they defaulted or not. We will use this data set to train a model to determine the probability of a client defaulting on a loan. We will need to keep some of the data for testing purposes where we measure the accuracy of the model.
 
-**Note:** We do recognize that people come from different backgrounds in their lives and putting people all into one bucket of credit risk detection may not be morally right. If someone defaulted on a loan early in their life it doesn’t mean they will default many years later (their situation could have changed) we will try to take this into account when creating our model.
+**Note:** We do recognize that people come from different backgrounds in their lives and putting people all into one bucket of credit risk detection may not be morally right which is why we chose to predict the probability of them defaulting rather than segregating them in a hard category.
 
 
 
@@ -24,7 +24,6 @@ Essentially, the project aims to:
 - Use applicants' financial, employment and credit history features to predict loan default outcomes.  
 - Achieve reliable predictive performance measures using ROC, precision, recall and F1 score on a test set  
 - Identify and analyze the most influential features contributing to default risk.  
-- Spot any ethical or moral concerns with our model and address them (try to find ways to avoid this)  
 
 **Note:** Although the model produces a probability, a threshold can be applied by the user to convert the output into a binary decision for evaluation purposes. This is useful as different Banks and Financial Instituions will have different thresholds on probabilities of defaulting e.g. one Bank might have a probability greater than 0.6 as a default risk whereas others may have it at 0.8 or higher. 
 
@@ -60,7 +59,7 @@ The data gives us access to borrowers' financial background, employment status a
 - **Credit history indicators**: Measures related to applicants past credit behavior and risk  
 - **Loan default outcome**: A binary label indicating whether the borrower has defaulted on the loan  
 
-The target variable is the loan default outcome, which allows the problem to be framed as a binary classification task.
+The target variable is the loan default outcome.
 
 
 ## Data Collection Method
